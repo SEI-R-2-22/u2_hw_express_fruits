@@ -1,0 +1,27 @@
+{
+  "name": "u2_hw_express_fruits",
+  "version": "1.0.0",
+  "description": "![fruit](https://s3.amazonaws.com/secretsaucefiles/photos/images/000/104/044/large/fruit-dancing-gif.gif?1485312342)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marveldylan/u2_hw_express_fruits.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marveldylan/u2_hw_express_fruits/issues"
+  },
+  "homepage": "https://github.com/marveldylan/u2_hw_express_fruits#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
