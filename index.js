@@ -29,6 +29,11 @@ app.get('/evens/:n', (request, response) => {
   response.send(arr)
 })
 
+app.get('/namelength/:name', (req, res) => {
+  const name = req.params.name
+  res.json(name.length)
+})
+
 app.listen(PORT, () =>
   console.log(`Serving up delicious fruits on port ${PORT} 🍒`)
 )
