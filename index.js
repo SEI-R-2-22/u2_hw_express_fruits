@@ -9,14 +9,14 @@ app.get('/ping', (req, res) => {
     res.json('pong');
 })
 
-app.get('/greet/:name', (req, res) =>
-    res.send(`Why hello there, ${req.params.name}`)
-)
-
 app.get('/five', (req, res) => {
     const arrOfFive = [1,2,3,4,5]
     console.log(arrOfFive)
     res.send(arrOfFive)
+})
+
+app.get('/fruits', (req, res) => {
+    res.json(fruits)
 })
 
 app.get('/evens/:n', (req, res) =>{
@@ -34,10 +34,24 @@ app.get('/evens/:n', (req, res) =>{
 
 })
 
+app.get('/greet/:name', (req, res) =>
+    res.send(`Why hello there, ${req.params.name}`)
+)
+
 app.get('/namelength/:name', (req, res) => {
     let userNameLength = req.params.name.length
     // let lengthOfName = userName.length
     res.send(userNameLength.toString())
+})
+
+
+
+app.get('/fruits/:name', (req, res) => {
+    const selected = fruits.find( (fruit) => req.params.name.toLowerCase() === fruit.name.toLowerCase())
+
+        res.send(selected)
+
+
 })
 
 
