@@ -4,8 +4,6 @@ const PORT = process.env.PORT || 3001
 
 const app = express();
 
-app.listen(PORT, () => console.log(`Serving up delicious fruits on port ${PORT} 🍒`))
-
 app.get(`/ping`, (req, res) => {
     res.json(`pong`)
 })
@@ -38,14 +36,6 @@ app.get(`/fruits`, (req, res) => {
     res.send(fruits)
 })
 
-app.get('/fruits/:name', (req, res) => {
-    let fruitName = req.params.name[0].toUpperCase() + req.params.name.slice(1).toLowerCase()
-
-    let index = fruits.findIndex((fruit) => fruit.name === fruitName )
-
-    res.send(fruits[index])
-})
-
 app.get('/fruits/sort', (req, res) => {
     fruits.sort((a,b) => {
         if(a.name > b.name){
@@ -56,3 +46,17 @@ app.get('/fruits/sort', (req, res) => {
     })
     res.send(fruits)
 })
+
+app.get('/fruits/:name', (req, res) => {
+    let fruitName = req.params.name[0].toUpperCase() + req.params.name.slice(1).toLowerCase()
+
+    let index = fruits.findIndex((fruit) => fruit.name === fruitName )
+
+    res.send(fruits[index])
+})
+
+app.get('*', (req, res) => {
+    res.send('404 Now Found')
+})
+
+app.listen(PORT, () => console.log(`Serving up delicious fruits on port ${PORT} 🍒`))
