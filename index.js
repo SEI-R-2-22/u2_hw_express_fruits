@@ -38,6 +38,21 @@ app.get('/fruits', (req, res) => {
   res.send(fruits)
 })
 
+app.get('/fruits/sort', (req, res) => {
+  const sortedFruits = fruits.sort(function (fruitA, fruitB) {
+    const fruitAName = fruitA.name.toUpperCase()
+    const fruitBName = fruitB.name.toUpperCase()
+    if (fruitAName < fruitBName) {
+      return -1
+    }
+    if (fruitAName > fruitBName) {
+      return 1
+    }
+    return 0
+  })
+  res.send(sortedFruits)
+})
+
 app.get('/fruits/:name', (req, res) => {
   const name = req.params.name.toLowerCase()
   const fruit = fruits.find((fruit) => fruit.name.toLowerCase() === name)
