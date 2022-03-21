@@ -13,6 +13,22 @@ app.get('/greet/:name', (req, res) => {
   res.json(`Why hello there, ${req.params.name}!`)
 })
 
+app.get('/five', (request, response) => {
+  const array = [1, 2, 3, 4, 5]
+  response.send(array)
+})
+
+app.get('/evens/:n', (request, response) => {
+  const arr = []
+  const limit = parseInt(request.params.n)
+  for (let i = 2; i <= limit; i++) {
+    if (i % 2 === 0) {
+      arr.push(i)
+    }
+  }
+  response.send(arr)
+})
+
 app.listen(PORT, () =>
   console.log(`Serving up delicious fruits on port ${PORT} 🍒`)
 )
