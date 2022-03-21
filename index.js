@@ -59,6 +59,10 @@ app.get('/fruits/:name', (req, res) => {
   res.send(fruit)
 })
 
+app.get('*', (req, res) => {
+  res.send('404 Not Found')
+})
+
 app.listen(PORT, () =>
   console.log(`Serving up delicious fruits on port ${PORT} 🍒`)
 )
