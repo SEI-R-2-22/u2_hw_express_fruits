@@ -37,10 +37,25 @@ app.get('/fruits/:name', (req, res) => {
   })
   res.json(fruitFinder)
 })
-app.get('/fruits/sort', (req, res) => {
-  let sorted = fruits.sort()
-
-  res.send(sorted)
+app.get('/fruit/sort', (req, res) => {
+  // let arr = []
+  // for (i = 0; i < fruits.length; i++) {
+  //   arr.push(fruits[i].name)
+  // }
+  // let sorted = arr.sort()
+  // res.send(sorted)
+  let sorted = fruits.sort((a, b) => {
+    name1 = a.name.toLowerCase()
+    name2 = b.name.toLowerCase()
+    if (name1 < name2) {
+      return -1
+    }
+    if (name1 > name2) {
+      return 1
+    }
+    return 0
+  })
+  res.json(sorted)
 })
 app.listen(PORT, () =>
   console.log(`Serving up delicious fruits on port ${PORT}`)
