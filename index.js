@@ -48,3 +48,34 @@ app.get('/evens/:n', (req, res) => {
 app.get('/namelength/:name', (req, res) => {
     res.send({msg:`the name you entered is ${req.params.name.length} letters long`})
 })
+
+
+
+
+////////////////////////////////////////
+////////////Fruit Routes////////////////
+//🍇 🍈 🍉 🍊 🍋 🍌 🍍 🥭 🍎 🍏 🍐 🍑 🍒  //
+//////////🫐 🥝 🍅 🫒 🥥 🥑 🍓////////////
+///////////////////////////////////////
+
+
+//////////fruits
+app.get('/fruits', (req, res) => {
+    res.send([fruits])
+});
+
+
+/////////fruits/:name
+// app.get('/fruit/:name', (req, res) => {
+//     const name = req.params.name.toLowerCase()
+//     const fruit = fruits.find((fruit) =>
+//     fruit.name.toLowerCase() === name)
+//     res.send(fruit)
+// });
+
+app.get('/fruits/:name', (req,res) => {
+    fruitName = fruits.find((fruit) => (
+        fruit.name.toLowerCase() === req.params.name.toLowerCase()
+        ))
+   res.send(fruitName)
+})
