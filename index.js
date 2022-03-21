@@ -39,7 +39,7 @@ app.get('/fruits', (req, res) => {
 })
 
 app.get('/fruits/sort', (req, res) => {
-  const sortedFruits = fruits.sort(function (fruitA, fruitB) {
+  fruits.sort(function (fruitA, fruitB) {
     const fruitAName = fruitA.name.toUpperCase()
     const fruitBName = fruitB.name.toUpperCase()
     if (fruitAName < fruitBName) {
@@ -50,7 +50,7 @@ app.get('/fruits/sort', (req, res) => {
     }
     return 0
   })
-  res.send(sortedFruits)
+  res.send(fruits)
 })
 
 app.get('/fruits/:name', (req, res) => {
