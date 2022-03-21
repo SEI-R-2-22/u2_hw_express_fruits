@@ -25,3 +25,6 @@ app.get('/namelength/:name', (req, res) => {
     })
 })
 
+app.get('/fruits/:name', (req,res) => {
+    res.send(req.params)
+})
