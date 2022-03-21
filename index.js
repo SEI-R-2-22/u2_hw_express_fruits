@@ -34,6 +34,10 @@ app.get('/namelength/:name', (req, res) => {
   res.json(name.length)
 })
 
+app.get('/fruits', (req, res) => {
+  res.send(fruits)
+})
+
 app.listen(PORT, () =>
   console.log(`Serving up delicious fruits on port ${PORT} 🍒`)
 )
