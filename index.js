@@ -1,5 +1,5 @@
 const express = require(`express`)
-const frfuits = require(`./fruits`)
+const fruits = require(`./fruits`)
 const PORT = process.env.PORT || 3000
 
 const app = express();
@@ -19,4 +19,22 @@ app.get(`/five`, (req, res) => {
     res.send(arr)
 })
 
-app.get
+app.get(`/evens/:n`, (req, res) => {
+    let arr = []
+    for(let i = 1; i <= parseInt(req.params.n); i++){
+        if(i%2 === 0){
+            arr.push(i)
+        }
+    }
+    res.send(arr)
+})
+
+app.get(`/namelength/:name`, (req, res) => {
+    let strLength = req.params.name.length
+    res.send(`${strLength}`)
+})
+
+app.get(`/fruits`, (req, res) => {
+    let fruitArr = [...fruits]
+    res.send(fruitArr)
+})
