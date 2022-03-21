@@ -35,6 +35,14 @@ app.get(`/namelength/:name`, (req, res) => {
 })
 
 app.get(`/fruits`, (req, res) => {
-    let fruitArr = [...fruits]
-    res.send(fruitArr)
+    
+    res.send(fruits)
+})
+
+app.get(`/fruits/:name`, (req, res) => {
+    let fruitName = req.params.name[0].toUpperCase() + req.params.name.slice(1).toLowerCase()
+
+    let index = fruits.findIndex((fruit) => fruit.name === fruitName )
+
+    res.send(fruits[index])
 })
