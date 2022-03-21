@@ -1,4 +1,5 @@
 const express = require('express')
+const { reset } = require('nodemon')
 const fruits = require('./fruits')
 const PORT = process.env.PORT || 3001
 
@@ -10,13 +11,16 @@ app.get('/ping', (req, res) => {
     res.json('pong')
 })
 
+
 app.get('/greet/:name', (req, res) => {
     res.send(`Why hello there, ${req.params.name}!`)
 })
 
+
 app.get('/five', (req, res) => {
     res.json([1, 2, 3, 4, 5])
 })
+
 
 app.get('/evens/:n', (req, res) => {
     let evensArray = []
@@ -28,6 +32,17 @@ app.get('/evens/:n', (req, res) => {
     }
     res.send(evensArray)
 })
+
+
+app.get('/fruits/sort', (req, res) => {
+    const fruitNames = fruits.map(fruitItem => {
+        return Object.entries(fruitItem)
+    })
+
+    const sortFruits = fruitNames.sort()
+    res.send(sortFruits)
+})
+
 
 app.get('/fruits/:name', (req, res) => {
     let fruitItem = (req.params.name)
@@ -43,17 +58,15 @@ app.get('/fruits/:name', (req, res) => {
 })
 
 
-
-app.get('/fruits-sort', (req, res) => {
-    const fruitNames = fruits.map(fruitItem => {
-        return Object.entries(fruitItem)
-    })
-    console.log(fruitNames)
-
-    const sortFruits = fruitNames.sort()
-    console.log(sortFruits)
-    res.send(sortFruits)
+app.get('/namelength/:name', (req, res) => {
+    let fruitName = (req.params.name)
+    res.send(`${fruitName} is ${fruitName.length} characters long.`)
 })
+
+
+
+
+
 
 app.get('*', (req, res) => {
     res.send('404 Not Found')
