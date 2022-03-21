@@ -10,7 +10,7 @@ app.get('/ping', (req, res) => {
 })
 
 app.get('/greet/:name', (req, res) => {
-  res.send(`Why hello there, ${req.params.name}`)
+  res.send(`Why hello there, ${req.params.name}!`)
 })
 
 app.get('/five', (req, res) => {
