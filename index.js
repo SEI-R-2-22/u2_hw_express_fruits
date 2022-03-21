@@ -34,6 +34,12 @@ app.get('/evens/:n', (req, res) =>{
 
 })
 
+app.get('/namelength/:name', (req, res) => {
+    let userNameLength = req.params.name.length
+    // let lengthOfName = userName.length
+    res.send(userNameLength.toString())
+})
+
 
 
 app.listen(PORT, () => console.log(`Serving up delicious fruits on port ${PORT}  🍒`))
