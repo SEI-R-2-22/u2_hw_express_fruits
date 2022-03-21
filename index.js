@@ -35,14 +35,24 @@ app.get(`/namelength/:name`, (req, res) => {
 })
 
 app.get(`/fruits`, (req, res) => {
-    
     res.send(fruits)
 })
 
-app.get(`/fruits/:name`, (req, res) => {
+app.get('/fruits/:name', (req, res) => {
     let fruitName = req.params.name[0].toUpperCase() + req.params.name.slice(1).toLowerCase()
 
     let index = fruits.findIndex((fruit) => fruit.name === fruitName )
 
     res.send(fruits[index])
+})
+
+app.get('/fruits/sort', (req, res) => {
+    fruits.sort((a,b) => {
+        if(a.name > b.name){
+            return 1
+        }else{
+            return -1
+        }
+    })
+    res.send(fruits)
 })
