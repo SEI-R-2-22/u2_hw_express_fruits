@@ -51,7 +51,6 @@ app.get('/namelength/:name', (req, res) => {
 
 
 
-
 ////////////////////////////////////////
 ////////////Fruit Routes////////////////
 //🍇 🍈 🍉 🍊 🍋 🍌 🍍 🥭 🍎 🍏 🍐 🍑 🍒  //
@@ -66,16 +65,44 @@ app.get('/fruits', (req, res) => {
 
 
 /////////fruits/:name
-// app.get('/fruit/:name', (req, res) => {
-//     const name = req.params.name.toLowerCase()
-//     const fruit = fruits.find((fruit) =>
-//     fruit.name.toLowerCase() === name)
-//     res.send(fruit)
-// });
-
 app.get('/fruits/:name', (req,res) => {
     fruitName = fruits.find((fruit) => (
         fruit.name.toLowerCase() === req.params.name.toLowerCase()
         ))
    res.send(fruitName)
 })
+
+
+
+//////////fruits/sort 
+///////Have to comment out fruit/:name in order to have this section work
+//credit to 'https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/'
+app.get('/fruits/sort', (req, res) => {
+    let sort = fruits.sort((a, b) => {
+
+    const fruitA = a.name.toUpperCase()
+    const fruitB = b.name.toUpperCase()
+
+    if (fruitA < fruitB) {
+      return -1
+    } else if (fruitA > fruitB) {
+      return 1
+    } else {
+     return 0
+    }
+    });
+    res.send(sort)
+})
+
+
+
+
+
+
+
+
+////////////Secret Bonus
+
+app.get('*', (req, res) => {
+    res.send('404 Not Found')
+  })
