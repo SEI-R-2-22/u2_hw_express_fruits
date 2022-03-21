@@ -21,13 +21,6 @@ app.get('/five',(req,res)=>{
     res.send(num5)
 })
 
-const countEvens = (n)=>{
-    for(let i = 2; i < n; i+2){
-        nums.push(i)
-    }
-    return nums
-}
-
 
 
 app.get('/evens/:num',(req,res)=>{
@@ -59,10 +52,32 @@ app.get('/fruits/:name',(req,res)=>{
 
 })
 
+app.get('/fruits/app/sort',(req,res)=>{
+    let sFruits = fruits
+    
+     sFruits.sort((a,b) => {
+        let aName = a.name.toLowerCase()
+        let bName = b.name.toLowerCase()
+        if(aName > bName){
+            return 1
+         }
+         if(aName < bName){
+            return -1
+         } 
+         
+         return 0;
+
+    })
+    res.send(sFruits)
+
+})
 
 
 
 
+app.get('*', (req, res) => {
+    res.send('404 Not Found')
+  })
 
 
 //Keep Listen at the bottom of the file
