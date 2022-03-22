@@ -1,4 +1,5 @@
 const express = require('express')
+const { json } = require('express/lib/response')
 const fruits = require('./fruits')
 const PORT = process.env.PORT || 3000
 
@@ -39,3 +40,10 @@ app.get('/namelength/:name', (req, res) => {
 app.get('/fruits/:name', (req,res) => {
     res.send(req.params)
 })
+
+app.get('/fruits/sort', (req, res) => {
+    // implement sort
+    const sortedFruits = res.fruits.sort()
+    res.send(`${sortedFruits}`)
+})
+  
