@@ -1,4 +1,3 @@
-const res = require('express/lib/response')
 const fruits = require('../fruits')
 
 const getFruits = (req, res) => {
@@ -13,11 +12,11 @@ const fruitName = (req, res) => {
 }
 
 // const fruitSort = (req, res) => {
-//   const sortedFruits = fruits.sort((a, b) =>
-//     // a.name.localeCompare(b.params.name)
-//     {
-//       a.params.name > b.params.name ? 1 : b.params.name > a.params.name ? -1 : 0
-//     }
+//   const sortedFruits = fruits.sort(
+//     (a, b) => a.params.name.localeCompare(b.params.name)
+//     // {
+//     //   a.params.name > b.params.name ? 1 : b.params.name > a.params.name ? -1 : 0
+//     // }
 //   )
 //   console.log(sortedFruits)
 //   res.send(sortedFruits)
