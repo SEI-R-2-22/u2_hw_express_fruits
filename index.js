@@ -22,13 +22,39 @@ app.get('/five', (req, res) => {
 
 //EVEN NUMBERS!!!!!!!!
 app.get('/evens/:n', (req, res) => {
-    res.send(``)
+
+    let array = []
+    let n = parseInt(req.params.n)
+    if (n >=2) {
+        for (let i=2; i<=n; i++) {
+            if (i%2 === 0) {
+                array.push(i)
+            }
+        }
+    }
+    res.send(array)
 })
 
 //LENGTH OF NAME
 app.get('/namelength/:name', (req, res) => {
-    res.send('${req.params.name}.length')
+    res.send(`${req.params.name.length}`)
 })
+
+//FRUITS 
+app.get('/fruits', (req, res) => {
+    res.send(fruits)
+})
+
+//FRUIT NAMES
+app.get('/fruits/:name', (req, res) => {
+    findFruit = fruits.find((fruit) => (
+        fruit.name.toLowerCase() === req.params.name.toLowerCase()
+    ))
+    res.send(findFruit)
+    // console.log(`${req.params.name}`)
+})
+
+
 
 
 
