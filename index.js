@@ -27,28 +27,27 @@ app.get('/five', (req, res) => {
 app.get('/evens/:n', (req, res) => {
     const n = parseInt(req.params.n)
     const arr =[]
-    for (let i = 0; i <= n; i ++) {
-        if(i % 2 === 0) {
+    for (let i = 2; i <= n; i ++) 
+        if(i % 2 === 0) 
             arr.push(i)
-        }
-    }
     res.send(arr)
 })
 
 app.get('/namelength/:name', (req, res) => {
-    
-    res.send(`Youre name has ${req.params.name.length} letters in it!`)
-
+    res.send(`Your name has ${req.params.name.length} letters in it!`)
 })
 
-// app.get('/namelength/:name', (req, res) => {
-    // const str = req.params.name
-    // const strLength = str.length
-    // res.send(strLength)
-// 
-// })
-//   
-//   
+app.get('/fruits', (req, res) => {
+    res.send(fruits)
+})
+
+app.get('/fruits/:name', (req, res) => {
+    res.send(fruits.find(e => e.name.toLowerCase() === req.params.name))
+})
+
+
+
+
   
   
   
