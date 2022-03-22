@@ -29,10 +29,40 @@ const getFruits = (req, res) => {
   res.send(fruits)
 }
 
+const fruitName = (req, res) => {
+  let fruit = fruits.find(
+    (fruit) =>
+      fruit.name === `${req.params.name}` ||
+      fruit.name.toLowerCase() === `${req.params.name}`
+  )
+  res.send(fruit)
+}
+
+const sortFruits = (req, res) => {
+  res.send(
+    fruits.sort(function (a, b) {
+      if (a.name > b.name) {
+        return 1
+      } else if (a.name < b.name) {
+        return -1
+      } else {
+        return 0
+      }
+    })
+  )
+}
+
+const catchAll = (req, res) => {
+  res.send('404 Not Found')
+}
+
 module.exports = {
   greet,
   five,
   evens,
   nameLength,
-  getFruits
+  getFruits,
+  fruitName,
+  sortFruits,
+  catchAll
 }

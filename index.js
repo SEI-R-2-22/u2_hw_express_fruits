@@ -20,6 +20,12 @@ app.get('/namelength/:name', fruitController.nameLength)
 
 app.get('/fruits', fruitController.getFruits)
 
+app.get('/fruits/sort', fruitController.sortFruits)
+
+app.get('/fruits/:name', fruitController.fruitName)
+
+app.get('*', fruitController.catchAll)
+
 app.listen(PORT, () =>
   console.log(`Serving up delicious fruits on port ${PORT} 🍒`)
 )
