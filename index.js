@@ -5,6 +5,8 @@ const PORT = process.env.PORT || 3000
 
 const app = express()
 
+
+
 app.listen(PORT, () => {
     console.log(`Serving up delicious fruits on port ${PORT} 🍒`)
 })
@@ -15,8 +17,17 @@ app.get('/greet/:name', (req, res) => {
     res.send({msg: `Why hello there, ${req.params}`})
 })
 
-app.get('/evens/:n', (req, res) => {
-    res.send([parseInt(2,4,6,8,10)])
+app.get(`/evens/:n`, (req, res) => {
+    let n = req.params
+    for(let i=0; i<=n; i++){
+        if(i % 2 == 0){
+            let nums = [...nums]
+            nums.push(i)
+        }else if(i % 2 !== 0){
+            console.log('not an even number')
+        }
+    }
+    res.send(`${nums}`)
 })
 
 app.get('/namelength/:name', (req, res) => {
