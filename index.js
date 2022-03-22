@@ -29,12 +29,22 @@ app.get('/evens/:n', (req, res) => {
     const arr =[]
     for (let i = 2; i <= n; i ++) 
         if(i % 2 === 0) 
-            arr.push(i)
+        arr.push(i)
     res.send(arr)
 })
 
 app.get('/namelength/:name', (req, res) => {
     res.send(`Your name has ${req.params.name.length} letters in it!`)
+})
+
+app.get('/fruits/sort', (req, res) => {
+    res.send(fruits.sort((a, b) => {
+        if(a.name < b.name)
+        return -1
+        if(b.name > a.name) 
+        return 1
+        return 0
+    }))
 })
 
 app.get('/fruits', (req, res) => {
@@ -44,15 +54,5 @@ app.get('/fruits', (req, res) => {
 app.get('/fruits/:name', (req, res) => {
     res.send(fruits.find(e => e.name.toLowerCase() === req.params.name))
 })
-
-
-
-
-  
-  
-  
-  
-  
-  
 
 app.listen(PORT, () => console.log(`Server is live on ${PORT}`))
