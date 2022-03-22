@@ -44,7 +44,17 @@ app.get(`/fruits/:name`, (req, res) => {
     res.send(found)
 })
 
+app.post('/fruits/sort', (req, res) => {
+    console.log()
+    fruits.sort((a, b) => a.name.localeCompare(b.name))
+    res.send(fruits)
+})
+
 
 
 
 app.listen(PORT, () => console.log(`Serving up delicious fruits on port ${PORT} 🍒`))
+
+app.get('*', (req, res) => {
+    res.send('404 Not Found')
+})
