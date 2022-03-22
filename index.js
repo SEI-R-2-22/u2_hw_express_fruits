@@ -1,6 +1,7 @@
 const express = require('express')
 
 const fruitController = require('./controllers/FruitController')
+const nameController = require('./controllers/NameController')
 
 const PORT = process.env.PORT || 3001
 
@@ -20,9 +21,14 @@ app.get('/someroute', (req, res) => {
   res.send({ message: 'This is someplace route' })
 })
 
+app.get('/greet/:name', nameController.greetName)
+app.get('/five', nameController.five)
+app.get('/evens/:n', nameController.evens)
+app.get('/nameLength/:name', nameController.nameLength)
+
 app.get('/fruits', fruitController.getFruits)
-// app.get('/fruits/sort', fruitController.fruitSort)
 app.get('/fruits/:name', fruitController.fruitName)
+// app.get('/fruits/sort', fruitController.fruitSort)
 
 app.get('*', (req, res) => {
   res.send('404 Not Found')
