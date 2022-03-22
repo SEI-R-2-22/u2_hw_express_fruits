@@ -34,3 +34,23 @@ app.get('/namelength/:name', (req, res) => {
    res.send(`${nameInput.length}`)
 })
 
+app.get('/fruits', (req, res) => {
+    res.send(fruits)
+})
+
+app.get('/fruits/:name', (req, res) => {
+    oneFruit = fruits.find((fruit) => {
+        fruit.name.toLowerCase() === req.params.name.toLowerCase
+    })
+    res.send(oneFruit)
+})
+
+app.get('/fruit/sort', (req, res) =>{
+    let fruitSort = fruits.sort((a, b) => a.name.localeCompare(b.name))
+    res.send(fruitSort)
+})
+
+app.get('*', (req, res) => {
+    res.send('404 Page Not Found')
+  })
+
