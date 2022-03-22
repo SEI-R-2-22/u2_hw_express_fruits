@@ -45,14 +45,9 @@ app.get('/fruits',(req,res)=>{
     res.send(fList)
 })
 
-app.get('/fruits/:name',(req,res)=>{
 
-    let found = fruits.find(n => n.name.toLowerCase() === req.params.name.toLowerCase())
-    res.send(found)
 
-})
-
-app.get('/fruits/app/sort',(req,res)=>{
+app.get('/fruits/sort',(req,res)=>{
     let sFruits = fruits
     
      sFruits.sort((a,b) => {
@@ -69,6 +64,12 @@ app.get('/fruits/app/sort',(req,res)=>{
 
     })
     res.send(sFruits)
+
+})
+app.get('/fruits/:name',(req,res)=>{
+
+    let found = fruits.find(n => n.name.toLowerCase() === req.params.name.toLowerCase())
+    res.send(found)
 
 })
 
