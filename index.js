@@ -4,7 +4,7 @@ const PORT = 3000
 const app = express()
 
 app.get('/ping', (req, res) => {
-    res.json('pong');
+    res.json('pong')
 })
 
 app.get('/someroute', (req, res) => {
@@ -34,7 +34,7 @@ app.get('/evens/:n', (req, res) => {
 })
 
 app.get('/namelength/:name', (req, res) => {
-    res.send(`Your name has ${req.params.name.length} letters in it!`)
+    res.send(`${req.params.name} has ${req.params.name.length} letters in it!`)
 })
 
 app.get('/fruits/sort', (req, res) => {
@@ -59,4 +59,4 @@ app.get('*', (req, res) => {
     res.send('404 Not Found')
 })
 
-app.listen(PORT, () => console.log(`Server is live on ${PORT}`))
+app.listen(PORT, () => console.log(`Server is live on port ${PORT}`))
