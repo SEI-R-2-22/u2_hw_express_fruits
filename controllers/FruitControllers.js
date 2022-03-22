@@ -35,8 +35,8 @@ const Fruits = (req, res) => {
 }
 
 const FruitsSort = (req, res) => {
-  // let array = fruits.map((fruit) => fruit.name)
-  let array = fruits.sort((a, b) => a.name.localeCompare(b.name))
+  let array = fruits.map((fruit) => fruit.name)
+  // let array = fruits.sort((a, b) => a.name.localeCompare(b.name))
   res.send(array)
 }
 
