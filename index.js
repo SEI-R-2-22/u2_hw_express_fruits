@@ -11,11 +11,20 @@ app.get('/ping', (req, res) => {
 app.get(
   '/greet/:name',
   (request, response, next) => {
-    console.log('this is middleware')
     next()
   },
   (req, res) => {
     res.send(`Why hello there, ${req.params.name}!`)
+  }
+)
+app.get(
+  '/five',
+  (request, response, next) => {
+    next()
+  },
+  (req, res) => {
+    let five = [1, 2, 3, 4, 5]
+    res.send(five)
   }
 )
 
