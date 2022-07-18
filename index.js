@@ -60,6 +60,21 @@ app.get(
     res.send(fruits)
   }
 )
+
+app.get(
+  '/fruits/:name',
+  (req, res, next) => {
+    next()
+  },
+  (req, res) => {
+    let fruitsName = fruits.find(
+      ({ name }) => name.toLowerCase() === req.params.name.toLowerCase()
+    )
+
+    res.send(fruitsName)
+  }
+)
+
 app.listen(PORT, () =>
   console.log(`Serving up delicious fruits on port ${PORT} 🍒`)
 )
