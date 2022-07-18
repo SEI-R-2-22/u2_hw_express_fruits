@@ -40,6 +40,17 @@ app.get(
   }
 )
 
+app.get(
+  '/namelength/:name',
+  (req, res, next) => {
+    next()
+  },
+  (req, res) => {
+    let nameLength = req.params.name
+    res.send(`${nameLength.length}`)
+  }
+)
+
 app.listen(PORT, () =>
   console.log(`Serving up delicious fruits on port ${PORT} 🍒`)
 )
