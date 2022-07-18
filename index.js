@@ -51,6 +51,15 @@ app.get(
   }
 )
 
+app.get(
+  '/fruits',
+  (req, res, next) => {
+    next()
+  },
+  (req, res) => {
+    res.send(fruits)
+  }
+)
 app.listen(PORT, () =>
   console.log(`Serving up delicious fruits on port ${PORT} 🍒`)
 )
